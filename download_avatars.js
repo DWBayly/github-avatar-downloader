@@ -20,13 +20,14 @@ function getRepoContributors(repoOwner, repoName, cb) {
 function downloadImageByURL(url, filePath) {
   request(url).pipe(fs.createWriteStream(filePath));
 }
-downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")
+/*downloadImageByURL("https://avatars2.githubusercontent.com/u/2741?v=3&s=466", "avatars/kvirani.jpg")*/
 
-/*getRepoContributors("jquery", "jquery", function(err, result) {
+getRepoContributors("jquery", "jquery", function(err, result) {
   console.log("Errors:", err);
   var val = JSON.parse(result);
   console.log(val);
   for(var x of val){
-    console.log(x['avatar_url']);
+    downloadImageByURL(x['avatar_url'],"avatars/"+x['login']+".jpg")
+    //console.log(x['avatar_url']);
   }
-});*/
+});
